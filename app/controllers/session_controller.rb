@@ -158,8 +158,8 @@ class SessionController < ApplicationController
       return
     end
 
-    RateLimiter.new(nil, "login-hr-#{request.remote_ip}", 30, 1.hour).performed!
-    RateLimiter.new(nil, "login-min-#{request.remote_ip}", 6, 1.minute).performed!
+    RateLimiter.new(nil, "login-hr-#{request.remote_ip}", 300, 1.hour).performed!
+    RateLimiter.new(nil, "login-min-#{request.remote_ip}", 60, 1.minute).performed!
 
     params.require(:login)
     params.require(:password)
